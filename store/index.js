@@ -8,7 +8,6 @@ const createStore = () => {
     mutations: {
       setStation(state, station) {
         state.selectedStation = station
-        alert('You are now: ' + state.selectedStation.name)
       }
     }
   })

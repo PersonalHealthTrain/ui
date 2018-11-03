@@ -1,7 +1,12 @@
 <template>
-  <div>Hello World</div>
+  <project-inbox kind="pending"/>
 </template>
-
 <script>
-export default {}
+import ProjectInbox from '~/components/ProjectInbox'
+
+export default {
+  components: {
+    ProjectInbox
+  }
+}
 </script>

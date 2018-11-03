@@ -10,7 +10,7 @@
       <template
         slot="items"
         slot-scope="props">
-        <tr @click="routeTo(props.item.id)">
+        <tr>
           <td>{{ props.item.id }}</td>
           <td>{{ props.item.title }}</td>
           <td>{{ props.item.train }}</td>

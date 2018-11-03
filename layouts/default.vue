@@ -6,6 +6,11 @@
       fixed
       app
     >
+      <v-list-tile>
+        <v-list-tile-content>
+          <v-list-tile-title><strong>Project Creator</strong></v-list-tile-title>
+        </v-list-tile-content>
+      </v-list-tile>
       <v-list>
         <v-list-tile
           v-for="(item, i) in routesManager"
@@ -26,13 +31,23 @@
       <v-divider />
 
       <!-- Select the Stations -->
-      <v-select
-        v-model="selectedStation"
-        :items="stations"
-        item-text="name"
-        return-object
-        @input="$store.commit('setStation', selectedStation)"
-      />
+      <v-list-tile>
+        <v-list-tile-content>
+          <v-list-tile-title><strong>Project Reviewer for Station:</strong></v-list-tile-title>
+        </v-list-tile-content>
+      </v-list-tile>
+      <v-list-tile>
+        <v-list-tile-content>
+          <v-select
+            v-model="selectedStation"
+            :items="stations"
+            item-text="name"
+            return-object
+            @input="$store.commit('setStation', selectedStation)"
+          />
+        </v-list-tile-content>
+      </v-list-tile>
+      <v-divider />
 
       <v-list>
         <v-list-tile
@@ -94,6 +109,15 @@ export default {
         { icon: 'block', title: 'Rejected Projects', to: '/project/rejected' }
       ],
       title: 'Personal Health Train - Project Management'
+    }
+  },
+  updated() {
+    // If no station has been selected before, but stations are available, we load
+    // the respective global state
+    if (this.selectedStation === null && this.stations.length > 0) {
+      const station = this.stations[0]
+      this.selectedStation = station
+      this.$store.commit('setStation', station)
     }
   }
 }
