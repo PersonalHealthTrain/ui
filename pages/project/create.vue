@@ -26,7 +26,7 @@
       <v-text-field
         v-model="email"
         :rules="emailRules"
-        label="E-Mail"
+        label="E-Mail of Principal Investigator"
         required
       />
 
