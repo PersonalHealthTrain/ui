@@ -108,9 +108,15 @@ export default {
         this.$axios
           .post('http://localhost:9000/projects', request)
           .then(response => {
-            if (response.status === 200) {
+            const status = response.status
+            if (status === 200) {
               alert('Project has been submitted successfully')
               this.clear()
+            } else {
+              alert(
+                'Submission of Project has failed. Server responded with code ' +
+                  status
+              )
             }
           })
       }

@@ -41,10 +41,7 @@
             <v-card-text>{{ train }}</v-card-text>
           </v-card>
         </v-flex>
-
-
       </v-layout>
-
     </v-container>
 
     <v-item-group>

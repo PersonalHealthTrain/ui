@@ -61,6 +61,9 @@
             </template>
           </v-data-table>
         </v-flex>
+        <v-btn
+          :disabled="idsOfApprovedStations.length === 0"
+          @click="runTrain()">Run Train</v-btn>
       </v-layout>
 
     </v-container>
@@ -68,8 +71,8 @@
 </template>
 
 <script>
-import ClientView from '~/components/ClientView'
 import ProjectIdConsumer from '~/mixins/project-id-consumer'
+import ClientView from '~/components/ClientView'
 import ApproveStateCell from '~/components/ApproveStateCell'
 
 export default {
@@ -93,6 +96,14 @@ export default {
     stations: []
   }),
 
+  computed: {
+    idsOfApprovedStations() {
+      return this.stations
+        .filter(station => station['state'] === 'approved')
+        .map(station => station.id)
+    }
+  },
+
   created() {
     this.getProject(this.$route.params['id']).then(response => {
       this.title = response.title
@@ -101,6 +112,10 @@ export default {
 
       this.stations = this.getStations(response)
     })
+  },
+
+  methods: {
+    runTrain() {}
   }
 }
 </script>
