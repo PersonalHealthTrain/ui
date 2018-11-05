@@ -53,20 +53,24 @@
             <template
               slot="items"
               slot-scope="props">
-              <td>{{ props.item.id }}</td>
-              <td>{{ props.item.name }}</td>
-              <td>
-                <approve-state-cell :approval-state="props.item.state"/>
-              </td>
+              <tr @click="toggleStation(props.item.id, props.item.name)">
+                <td>{{ props.item.id }}</td>
+                <td>{{ props.item.name }}</td>
+                <td>
+                  <approve-state-cell :approval-state="props.item.state"/>
+                </td>
+              </tr>
             </template>
           </v-data-table>
         </v-flex>
+
         <v-btn
           :disabled="idsOfApprovedStations.length === 0"
           @click="runTrain()">Run Train</v-btn>
       </v-layout>
 
     </v-container>
+    <route-builder :stations="selectedStations"/>
   </client-view>
 </template>
 
@@ -74,9 +78,11 @@
 import ProjectIdConsumer from '~/mixins/project-id-consumer'
 import ClientView from '~/components/ClientView'
 import ApproveStateCell from '~/components/ApproveStateCell'
+import RouteBuilder from '~/components/route-builder'
 
 export default {
   components: {
+    RouteBuilder,
     ClientView,
     ApproveStateCell
   },
@@ -87,13 +93,18 @@ export default {
     title: '',
     description: '',
     train: '',
+    text: 'hello World',
 
-    // Stations
+    // Station Table
     headers: [
       { text: 'Station ID', value: 'id', align: 'center' },
       { text: 'Name', value: 'name', align: 'center' }
     ],
-    stations: []
+    // The stations that we observe
+    stations: [],
+
+    // The stations that we have selected
+    selectedStations: []
   }),
 
   computed: {
@@ -106,16 +117,29 @@ export default {
 
   created() {
     this.getProject(this.$route.params['id']).then(response => {
+      // Unpack server response into items that we care about
       this.title = response.title
       this.description = response.description
       this.train = response.train
-
       this.stations = this.getStations(response)
     })
   },
 
   methods: {
-    runTrain() {}
+    // Either removes the station with the selected ID from the selectedStation List or
+    // Adds it to the end of the list
+    toggleStation(id, name) {
+      const station = { id: id, name: name }
+      const index = this.selectedStations.map(station => station.id).indexOf(id)
+      if (index === -1) {
+        this.selectedStations.push(station)
+      } else {
+        this.selectedStations.splice(index, 1)
+      }
+    },
+    runTrain() {
+      alert('Choo Choo')
+    }
   }
 }
 </script>
