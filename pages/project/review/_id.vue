@@ -63,7 +63,9 @@ export default {
 
   mixins: [ProjectIdConsumer],
   data: () => ({
+    // Project properties
     project: '',
+    title: '',
     description: '',
     train: '',
     id: null,

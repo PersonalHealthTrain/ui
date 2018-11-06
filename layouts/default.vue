@@ -69,7 +69,7 @@
     </v-navigation-drawer>
 
     <v-toolbar
-      clipped-left="true"
+      clipped-left
       fixed
       app>
       <v-toolbar-side-icon @click="drawer = !drawer" />
