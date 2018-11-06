@@ -105,20 +105,18 @@ export default {
           stations: this.selectedStations,
           train: this.train
         }
-        this.$axios
-          .post('http://localhost:9000/projects', request)
-          .then(response => {
-            const status = response.status
-            if (status === 200) {
-              alert('Project has been submitted successfully')
-              this.clear()
-            } else {
-              alert(
-                'Submission of Project has failed. Server responded with code ' +
-                  status
-              )
-            }
-          })
+        this.$axios.post('/projects', request).then(response => {
+          const status = response.status
+          if (status === 200) {
+            alert('Project has been submitted successfully')
+            this.clear()
+          } else {
+            alert(
+              'Submission of Project has failed. Server responded with code ' +
+                status
+            )
+          }
+        })
       }
     },
     clear() {

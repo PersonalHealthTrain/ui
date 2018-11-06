@@ -54,8 +54,9 @@ module.exports = {
   */
   axios: {
     // See https://github.com/nuxt-community/axios-module#options
+    baseUrl: process.env.BASE_URL || 'http://localhost:9000',
+    browserBaseURL: process.env.BASE_URL || 'http://localhost:9000'
   },
-
   /*
   ** Build configuration
   */

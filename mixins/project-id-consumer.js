@@ -1,5 +1,5 @@
 const projects = 'projects'
-const url = `http://localhost:9000/${projects}/`
+const url = `${projects}/`
 
 // Private
 function getUpdatedStations(response, state) {

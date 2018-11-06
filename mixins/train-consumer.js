@@ -1,5 +1,5 @@
 const trains = 'trains'
-const url = `http://localhost:9000/${trains}`
+const url = `/${trains}`
 
 export default {
   data: () => ({

@@ -108,16 +108,14 @@ export default {
         projectId: this.id,
         approved: approved
       }
-      this.$axios
-        .post('http://localhost:9000/approvals', approval)
-        .then(response => {
-          if (approved) {
-            alert('The Project has been approved successfully')
-          } else {
-            alert('The Project has been rejected successfully')
-          }
-          this.$router.replace('/project/' + this.status)
-        })
+      this.$axios.post('/approvals', approval).then(response => {
+        if (approved) {
+          alert('The Project has been approved successfully')
+        } else {
+          alert('The Project has been rejected successfully')
+        }
+        this.$router.replace('/project/' + this.status)
+      })
     }
   }
 }
