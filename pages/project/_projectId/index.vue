@@ -84,8 +84,6 @@
         </v-container>
       </v-tab-item>
 
-
-      <!-- TODO Train list for projects (train submissions) -->
       <v-tab-item
         id="mobile-tabs-5-2"
       >
@@ -105,7 +103,7 @@
                 <template
                   slot="items"
                   slot-scope="props">
-                  <tr>
+                  <tr @click="routeToTrain(props.item.id)">
                     <td>{{ props.item.id }}</td>
                   </tr>
                 </template>
@@ -208,9 +206,8 @@ export default {
   },
 
   created() {
-    this.projectId = this.$route.params['id']
+    this.projectId = this.$route.params['projectId']
     this.getProject(this.projectId).then(response => {
-      alert(JSON.stringify(response))
       // Unpack server response into items that we care about
       this.title = response.title
       this.description = response.description
@@ -239,23 +236,11 @@ export default {
         baseImage: 'personalhealthtrain/' + this.train + ':base' // TODO Might not be the final solution for referencing base images
       }
       this.submitTrain(trainSubmission)
+    },
+
+    routeToTrain(id) {
+      this.$router.replace(this.projectId + '/train/' + id)
     }
   }
 }
 </script>
-
-<!--@JsonProperty("route")-->
-<!--val route: List<Int>,-->
-
-  <!--/**-->
-  <!--* Which project this train submission refers to-->
-  <!--*/-->
-  <!--@JsonProperty("projectId")-->
-  <!--val projectId: Int,-->
-
-  <!--/**-->
-  <!--* The base image from which to pull from-->
-  <!--*/-->
-  <!--// TODO Use client-data fro JDregistry project for proper data types-->
-  <!--@JsonProperty("baseImage")-->
-  <!--val baseImage: String-->

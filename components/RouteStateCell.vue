@@ -12,15 +12,15 @@ export default {
   props: {
     routeState: {
       type: String,
-      default: 'approved'
+      default: 'done'
     }
   },
 
   data: () => ({
     infoMap: {
-      approved: ['check', 'Approved'],
-      pending: ['inbox', 'Pending'],
-      rejected: ['block', 'Rejected']
+      done: ['check', 'Finished'],
+      computing: ['train', 'In Progress'],
+      waiting: ['hourglass_empty', 'Pending']
     }
   }),
 

@@ -2,7 +2,7 @@ export default {
   methods: {
     submitTrain(trainSubmission) {
       const projectId = trainSubmission.projectId
-      const url = `http://localhost:9000/projects/${projectId}/train`
+      const url = `http://localhost:9000/projects/${projectId}/trains`
       this.$axios.post(url, trainSubmission).then(response => {
         const status = response.status
         if (status === 200) {
