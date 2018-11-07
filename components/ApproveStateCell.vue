@@ -10,7 +10,7 @@
 <script>
 export default {
   props: {
-    routeState: {
+    approvalState: {
       type: String,
       default: 'approved'
     }
@@ -26,11 +26,11 @@ export default {
 
   computed: {
     icon() {
-      return this.infoMap[this.routeState][0]
+      return this.infoMap[this.approvalState][0]
     },
 
     text() {
-      return this.infoMap[this.routeState][1]
+      return this.infoMap[this.approvalState][1]
     }
   }
 }

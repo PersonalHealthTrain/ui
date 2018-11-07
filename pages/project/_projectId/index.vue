@@ -146,7 +146,7 @@
         </v-container>
         <route-builder :stations="selectedStations"/>
         <v-btn
-          :disabled="idsOfApprovedStations.length === 0"
+          :disabled="idsOfApprovedStations.length === 0 || selectedStations.length === 0"
           @click="runTrain()">Run Train</v-btn>
 
       </v-tab-item>
@@ -232,8 +232,7 @@ export default {
     runTrain() {
       const trainSubmission = {
         route: this.selectedStations.map(station => station.id),
-        projectId: this.projectId,
-        baseImage: 'personalhealthtrain/' + this.train + ':base' // TODO Might not be the final solution for referencing base images
+        projectId: this.projectId
       }
       this.submitTrain(trainSubmission)
     },
