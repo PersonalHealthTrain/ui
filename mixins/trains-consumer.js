@@ -1,16 +1,15 @@
 const trains = 'trains'
-const url = `/${trains}`
 
 export default {
   data: () => ({
     trains: [],
-    trainItems: []
+    trainFetchComplete: false
   }),
   created() {
-    this.$axios.$get(url).then(data => {
+    this.$axios.$get(trains).then(data => {
       if (trains in data) {
         this.trains = data[trains]
-        this.trainItems = this.trains.map(train => train.name)
+        this.trainFetchComplete = true
       }
     })
   }

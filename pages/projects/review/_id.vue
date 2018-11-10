@@ -1,5 +1,5 @@
 <template>
-  <client-view :title="title">
+  <client-view :title="project.title">
 
     <!-- Project infomration -->
     <v-container
@@ -16,7 +16,7 @@
         </v-flex>
         <v-flex xs10>
           <v-card>
-            <v-card-text>{{ title }}</v-card-text>
+            <v-card-text>{{ project.title }}</v-card-text>
           </v-card>
         </v-flex>
 
@@ -27,18 +27,18 @@
         </v-flex>
         <v-flex xs10>
           <v-card>
-            <v-card-text>{{ description }}</v-card-text>
+            <v-card-text>{{ project.description }}</v-card-text>
           </v-card>
         </v-flex>
 
         <v-flex xs2>
           <v-card>
-            <v-card-text><strong>Train</strong></v-card-text>
+            <v-card-text><strong>Trains</strong></v-card-text>
           </v-card>
         </v-flex>
         <v-flex xs10>
           <v-card>
-            <v-card-text>{{ train }}</v-card-text>
+            <v-card-text>{{ project.trains }}</v-card-text>
           </v-card>
         </v-flex>
       </v-layout>
@@ -54,7 +54,7 @@
 
 <script>
 import ClientView from '~/components/ClientView'
-import ProjectIdConsumer from '~/mixins/project-id-consumer'
+import ProjectIdConsumer from '~/mixins/projects-id-consumer'
 
 export default {
   components: {
@@ -65,9 +65,6 @@ export default {
   data: () => ({
     // Project properties
     project: '',
-    title: '',
-    description: '',
-    train: '',
     id: null,
     approvedStations: [],
     rejectedStations: []
@@ -93,9 +90,7 @@ export default {
   },
   created() {
     this.getProject(this.$route.params['id']).then(response => {
-      this.title = response.title
-      this.description = response.description
-      this.train = response.train
+      this.project = response
       this.id = response.id
       this.approvedStations = response['approvedBy'].map(station => station.id)
       this.rejectedStations = response['rejectedBy'].map(station => station.id)
@@ -114,7 +109,7 @@ export default {
         } else {
           alert('The Project has been rejected successfully')
         }
-        this.$router.replace('/project/' + this.status)
+        this.$router.replace('/projects/' + this.status)
       })
     }
   }

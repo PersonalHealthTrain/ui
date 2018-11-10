@@ -88,7 +88,7 @@
 </template>
 
 <script>
-import StationConsumer from '~/mixins/station-consumer'
+import StationConsumer from '~/mixins/stations-consumer'
 
 export default {
   mixins: [StationConsumer],
@@ -98,15 +98,15 @@ export default {
       drawer: true,
       selectedStation: null,
       routesManager: [
-        { icon: 'create', title: 'Create Project', to: '/project/create' },
-        { icon: 'assignment', title: 'My Projects', to: '/project' },
-        { icon: 'store', title: 'Stations', to: '/station' },
-        { icon: 'train', title: 'Trains', to: '/train' }
+        { icon: 'create', title: 'Create Project', to: '/projects/create' },
+        { icon: 'assignment', title: 'My Projects', to: '/projects' },
+        { icon: 'store', title: 'Stations', to: '/stations' },
+        { icon: 'train', title: 'Trains', to: '/trains' }
       ],
       routesReviewer: [
-        { icon: 'inbox', title: 'Pending Projects', to: '/project/pending' },
-        { icon: 'check', title: 'Approved Projects', to: '/project/approved' },
-        { icon: 'block', title: 'Rejected Projects', to: '/project/rejected' }
+        { icon: 'inbox', title: 'Pending Projects', to: '/projects/pending' },
+        { icon: 'check', title: 'Approved Projects', to: '/projects/approved' },
+        { icon: 'block', title: 'Rejected Projects', to: '/projects/rejected' }
       ],
       title: 'Personal Health Train - Project Management'
     }

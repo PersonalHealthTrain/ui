@@ -48,30 +48,6 @@ export default {
 
   updated() {
     const numberOfNodes = this.stations.length
-    if (numberOfNodes < 1) {
-      return
-    }
-    // const nodes = this.stations.map(station => ({
-    //   id: station.id,
-    //   label: station.name
-    // }))
-    //
-    // const edges = Array.apply(null, { length: numberOfNodes - 1 })
-    //   .map(Function.call, Number)
-    //   .map(i => ({
-    //     from: nodes[i].id,
-    //     to: nodes[i + 1].id
-    //   }))
-    //
-    // if (this.network !== null) {
-    //   this.network.destroy()
-    // }
-    // this.network = new vis.Network(
-    //   document.getElementById('route-builder'),
-    //   { nodes: nodes, edges: edges },
-    //   this.options
-    // )
-
     const nodes = this.stations.map(station => ({
       data: { id: station.id, label: station.name }
     }))
@@ -123,7 +99,11 @@ export default {
         edges: edges
       }
     })
-    cy.layout({ name: 'dagre', rankDir: 'LR' }).run()
+    cy.layout({
+      name: 'dagre',
+      rankDir: 'LR',
+      fit: true
+    }).run()
   }
 }
 </script>
@@ -131,7 +111,7 @@ export default {
 <style>
 #route-builder {
   width: 100%;
-  height: 30em;
+  height: 15em;
   border: 1px solid lightgray;
 }
 </style>

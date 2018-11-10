@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import StationConsumer from '../../mixins/station-consumer'
+import StationConsumer from '../mixins/stations-consumer'
 import ClientView from '~/components/ClientView'
 
 export default {

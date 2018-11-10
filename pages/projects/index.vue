@@ -13,7 +13,7 @@
         <tr @click="routeTo(props.item.id)">
           <td>{{ props.item.id }}</td>
           <td>{{ props.item.title }}</td>
-          <td>{{ props.item.train }}</td>
+          <td>{{ props.item.email }}</td>
           <td><strong>View Project Page</strong></td>
         </tr>
       </template>
@@ -23,7 +23,7 @@
 </template>
 <script>
 import ClientView from '~/components/ClientView'
-import ProjectConsumer from '~/mixins/project-consumer'
+import ProjectConsumer from '~/mixins/projects-consumer'
 
 export default {
   components: {
@@ -34,14 +34,14 @@ export default {
     headers: [
       { text: 'Project ID', align: 'left', value: 'id' },
       { text: 'Title', value: 'name', align: 'left' },
-      { text: 'Train', value: 'train', align: 'left' },
+      { text: 'Contact', value: 'contact', align: 'left' },
       { text: 'Actions', value: 'actions', align: 'left' }
     ]
   }),
 
   methods: {
     routeTo(projectId) {
-      this.$router.push('project/' + projectId)
+      this.$router.push('projects/' + projectId)
     }
   }
 }

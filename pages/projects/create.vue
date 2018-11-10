@@ -18,7 +18,7 @@
         v-model="description"
         :rules="descriptionRules"
         label="Description"
-        rows="20"
+        rows="10"
         required
       />
 
@@ -30,23 +30,16 @@
         required
       />
 
-      <!-- Select the Stations -->
-      <v-select
-        v-model="selectedStations"
-        :items="stations"
-        item-text="name"
-        item-value="id"
-        chips
-        label="Select Stations for the project"
-        multiple
-      />
-
       <!-- Select the Train -->
       <v-select
-        v-model="train"
-        :items="trainItems"
-        label="Select Train"
-        required
+        v-model="selectedTrains"
+        :items="trains"
+        :rules="trainsRules"
+        item-text="name"
+        item-value="name"
+        chips
+        label="Select Trains for the project"
+        multiple
       />
 
 
@@ -67,14 +60,13 @@
 
 <script>
 import ClientView from '~/components/ClientView'
-import StationConsumer from '~/mixins/station-consumer'
-import TrainConsumer from '~/mixins/train-consumer'
+import TrainConsumer from '~/mixins/trains-consumer'
 
 export default {
   components: {
     ClientView
   },
-  mixins: [StationConsumer, TrainConsumer],
+  mixins: [TrainConsumer],
 
   data: () => ({
     valid: true,
@@ -92,8 +84,10 @@ export default {
     ],
     select: null,
 
-    selectedStations: [],
-    train: '',
+    selectedTrains: [],
+    trainsRules: [
+      v => v.length > 0 || 'At least one train needs to be selected'
+    ],
     checkbox: false
   }),
   methods: {
@@ -102,9 +96,10 @@ export default {
         const request = {
           title: this.title,
           description: this.description,
-          stations: this.selectedStations,
-          train: this.train
+          email: this.email,
+          trains: this.selectedTrains
         }
+
         this.$axios.post('/projects', request).then(response => {
           const status = response.status
           if (status === 200) {

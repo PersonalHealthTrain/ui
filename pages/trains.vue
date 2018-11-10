@@ -3,32 +3,32 @@
 
     <!-- Toolbar -->
     <v-toolbar
-      flat
       color="white">
-      <v-toolbar-title>Stations</v-toolbar-title>
+      <v-toolbar-title>Train</v-toolbar-title>
     </v-toolbar>
 
-
-    <v-data-table
+    <item-table
       :headers="headers"
       :items="trains"
-      hide-actions
-      class="elevation-1"
-    >
+      :fetch-complete="trainFetchComplete">
       <template
         slot="items"
         slot-scope="props">
-        <td>{{ props.item.namespace }}</td>
-        <td>{{ props.item.name }}</td>
+        <tr>
+          <td>{{ props.item.namespace }}</td>
+          <td>{{ props.item.name }}</td>
+        </tr>
       </template>
-    </v-data-table>
+    </item-table>
   </div>
 </template>
 
 <script>
-import TrainConsumer from '../../mixins/train-consumer'
+import TrainConsumer from '../mixins/trains-consumer'
+import ItemTable from '../components/item-table'
 
 export default {
+  components: { ItemTable },
   mixins: [TrainConsumer],
   data: () => ({
     headers: [

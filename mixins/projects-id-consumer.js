@@ -10,7 +10,7 @@ function getUpdatedStations(response, state) {
 
 export default {
   methods: {
-    // One particular project
+    // One particular projects
     getProject(projectId) {
       return this.$axios.$get(url + projectId)
     },

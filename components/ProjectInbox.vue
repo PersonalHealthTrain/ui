@@ -24,7 +24,7 @@
 
 <script>
 import ClientView from '~/components/ClientView'
-import ProjectConsumer from '~/mixins/project-consumer'
+import ProjectConsumer from '~/mixins/projects-consumer'
 
 export default {
   components: {
