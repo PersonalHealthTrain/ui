@@ -9,6 +9,7 @@
         fixed-tabs
         color="transparent"
         icons-and-text
+        @change="closeAll()"
       >
         <v-tabs-slider/>
         <v-tab
@@ -97,6 +98,10 @@ export default {
   },
 
   methods: {
+    closeAll() {
+      // TODO
+    },
+
     loadProject() {
       const projectId = parseInt(this.$route.params['id'])
       this.getProject(projectId).then(response => {

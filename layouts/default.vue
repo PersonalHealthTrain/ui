@@ -100,8 +100,8 @@ export default {
       routesManager: [
         { icon: 'create', title: 'Create Project', to: '/projects/create' },
         { icon: 'assignment', title: 'My Projects', to: '/projects' },
-        { icon: 'store', title: 'Stations', to: '/stations' },
-        { icon: 'train', title: 'Trains', to: '/trains' }
+        { icon: 'store', title: 'Available Stations', to: '/stations' },
+        { icon: 'train', title: 'Available Trains', to: '/trains' }
       ],
       routesReviewer: [
         { icon: 'inbox', title: 'Pending Projects', to: '/projects/pending' },

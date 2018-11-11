@@ -59,7 +59,9 @@
         </v-flex>
       </v-layout>
     </v-container>
-    <route-builder :stations="selectedStations"/>
+    <route-builder
+      :stations="selectedStations"
+      init/>
     <div hidden> {{ tableStations }}</div>
     <v-btn
       :disabled="!valid"
@@ -97,22 +99,26 @@ export default {
   data: () => ({
     // Station Table
     headers: [
-      { text: 'Stop', value: 'stop', align: 'center' },
-      { text: 'Station ID', value: 'id', align: 'center' },
-      { text: 'Name', value: 'name', align: 'center' }
+      { text: 'Stop', value: 'stop', align: 'center', sortable: false },
+      { text: 'Station ID', value: 'id', align: 'center', sortable: false },
+      { text: 'Name', value: 'name', align: 'center', sortable: false }
     ],
 
     valid: true,
-    trainsRules: [v => v !== null || 'At least one train needs to be selected'],
+    trainsRules: [
+      v => v !== null || 'Please select the train that you want to execute now'
+    ],
 
-    selectedStations: [],
+    selectedStations: { currentStation: null, stations: [] },
     selectedTrain: null
   }),
 
   computed: {
     // stations extended by the stop index
     tableStations() {
-      const selectedStationIds = this.selectedStations.map(it => it.id)
+      const selectedStationIds = this.selectedStations['stations'].map(
+        it => it.id
+      )
       return this.stations.map(station => {
         const stop = selectedStationIds.indexOf(station.id)
         return Object.assign({ stop: stop }, station)
@@ -130,19 +136,19 @@ export default {
         )
         return
       }
-
-      const index = this.selectedStations.map(it => it.id).indexOf(station.id)
+      const stations = this.selectedStations['stations']
+      const index = stations.map(it => it.id).indexOf(station.id)
       if (index === -1) {
-        this.selectedStations.push(station)
+        stations.push(station)
       } else {
-        this.selectedStations.splice(index, 1)
+        stations.splice(index, 1)
       }
     },
     runTrain() {
       if (this.$refs.form.validate()) {
         this.submitTrain({
           train: this.selectedTrain,
-          route: this.selectedStations.map(station => station.id),
+          route: this.selectedStations['stations'].map(station => station.id),
           projectId: this.projectId
         })
       }
