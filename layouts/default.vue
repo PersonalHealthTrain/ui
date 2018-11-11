@@ -8,7 +8,7 @@
     >
       <v-list-tile>
         <v-list-tile-content>
-          <v-list-tile-title><strong>Project Creator</strong></v-list-tile-title>
+          <v-list-tile-title><strong>Project Management</strong></v-list-tile-title>
         </v-list-tile-content>
       </v-list-tile>
       <v-list>
@@ -108,7 +108,7 @@ export default {
         { icon: 'check', title: 'Approved Projects', to: '/projects/approved' },
         { icon: 'block', title: 'Rejected Projects', to: '/projects/rejected' }
       ],
-      title: 'Personal Health Train - Project Management'
+      title: 'Personal Health Train - DIFUTURE Project Management'
     }
   },
   updated() {

@@ -42,7 +42,9 @@
         </v-card>
         <div v-if="project.railedTrains.length > 0">
           <v-card>
-            <v-card-text>Click a submitted train to get details on the execution state</v-card-text>
+            <v-card-text>
+              Click a submitted train to get details on the execution state.
+              Clicking on a node for a route will fire up the result view for the respective station.</v-card-text>
           </v-card>
           <v-data-table
             :items="project.railedTrains"

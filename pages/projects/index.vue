@@ -14,6 +14,7 @@
           <td>{{ props.item.id }}</td>
           <td>{{ props.item.title }}</td>
           <td>{{ props.item.email }}</td>
+          <td>{{ props.item.railedTrains.length }}</td>
           <td><strong>View Project Page</strong></td>
         </tr>
       </template>
@@ -35,6 +36,11 @@ export default {
       { text: 'Project ID', align: 'left', value: 'id' },
       { text: 'Title', value: 'name', align: 'left' },
       { text: 'Contact', value: 'contact', align: 'left' },
+      {
+        text: 'Number of railed Trains',
+        value: 'nRailedTrains',
+        align: 'left'
+      },
       { text: 'Actions', value: 'actions', align: 'left' }
     ]
   }),
