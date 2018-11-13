@@ -2,6 +2,7 @@
   <v-app>
     <v-navigation-drawer
       v-model="drawer"
+      class="main-navigation-drawer"
       clipped
       fixed
       app
@@ -69,12 +70,13 @@
     </v-navigation-drawer>
 
     <v-toolbar
+      class="main-titlebar"
       clipped-left
       fixed
       app>
       <v-toolbar-side-icon @click="drawer = !drawer" />
 
-      <v-toolbar-title v-text="title"/>
+      <v-toolbar-title>Personal Health Train - DIFUTURE Project Management</v-toolbar-title>
     </v-toolbar>
 
     <!-- The actual content -->
@@ -107,8 +109,7 @@ export default {
         { icon: 'inbox', title: 'Pending Projects', to: '/projects/pending' },
         { icon: 'check', title: 'Approved Projects', to: '/projects/approved' },
         { icon: 'block', title: 'Rejected Projects', to: '/projects/rejected' }
-      ],
-      title: 'Personal Health Train - DIFUTURE Project Management'
+      ]
     }
   },
   updated() {
@@ -122,3 +123,15 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.main-titlebar {
+  background-color: #a9a9a9;
+}
+.main-navigation-drawer {
+  background-color: #d7cec7;
+}
+.center-title {
+  text-align: center;
+}
+</style>
