@@ -124,14 +124,14 @@ export default {
 }
 </script>
 
-<style scoped>
-.main-titlebar {
-  background-color: #a9a9a9;
-}
-.main-navigation-drawer {
-  background-color: #d7cec7;
-}
-.center-title {
-  text-align: center;
-}
-</style>
+<!--<style scoped>-->
+<!--.main-titlebar {-->
+  <!--background-color: #a9a9a9;-->
+<!--}-->
+<!--.main-navigation-drawer {-->
+  <!--background-color: #d7cec7;-->
+<!--}-->
+<!--.center-title {-->
+  <!--text-align: center;-->
+<!--}-->
+<!--</style>-->
