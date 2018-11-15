@@ -1,5 +1,7 @@
 <template>
-  <div>
+  <v-container
+    grid-list-md
+    text-xs-center>
     <v-expansion-panel>
       <v-expansion-panel-content>
         <div slot="header"><h4>Project Information</h4></div>
@@ -79,7 +81,7 @@
       :railed-train-id="railedTrainId"
       :stop="stop"
       @onClose="dialog = false"/>
-  </div>
+  </v-container>
 </template>
   <script>
 import ItemTable from './item-table'

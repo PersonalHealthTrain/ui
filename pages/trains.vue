@@ -17,6 +17,7 @@
         <tr>
           <td>{{ props.item.namespace }}</td>
           <td>{{ props.item.name }}</td>
+          <td>{{ props.item.last_updated }}</td>
         </tr>
       </template>
     </item-table>
@@ -33,7 +34,8 @@ export default {
   data: () => ({
     headers: [
       { text: 'Namespace', align: 'left', value: 'namespace' },
-      { text: 'Name', value: 'name', align: 'left' }
+      { text: 'Name', value: 'name', align: 'left' },
+      { text: 'Last Updated', value: 'name', align: 'left' }
     ]
   })
 }
