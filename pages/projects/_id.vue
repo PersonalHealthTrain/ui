@@ -23,7 +23,7 @@
           href="#mobile-tabs-5-2"
           class="primary--text">
           Run new Train
-          <v-icon>train</v-icon>
+          <v-icon>play_arrow</v-icon>
         </v-tab>
       </v-tabs>
     </v-toolbar>
