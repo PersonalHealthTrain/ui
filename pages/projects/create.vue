@@ -120,3 +120,9 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.v-input {
+  font-size: 1.5em;
+}
+</style>

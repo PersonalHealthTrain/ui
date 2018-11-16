@@ -124,14 +124,13 @@ export default {
 }
 </script>
 
-<!--<style scoped>-->
-<!--.main-titlebar {-->
-  <!--background-color: #a9a9a9;-->
-<!--}-->
-<!--.main-navigation-drawer {-->
-  <!--background-color: #d7cec7;-->
-<!--}-->
-<!--.center-title {-->
-  <!--text-align: center;-->
-<!--}-->
-<!--</style>-->
+<style>
+/*.main-titlebar {*/
+/*background-color: #1d263b;*/
+/*color: white;*/
+/*}*/
+/*.main-navigation-drawer {*/
+/*background-color: #5c6784;*/
+/*color: white;*/
+/*}*/
+</style>
