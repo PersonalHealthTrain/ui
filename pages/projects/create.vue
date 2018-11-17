@@ -25,7 +25,7 @@
               v-model="description"
               :rules="descriptionRules"
               label="Description"
-              rows="5"
+              rows="1"
               required
             />
           </v-flex>
