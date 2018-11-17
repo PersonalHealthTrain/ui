@@ -35,7 +35,7 @@
             <v-text-field
               v-model="email"
               :rules="emailRules"
-              label="E-Mail of Principal Investigator"
+              label="E-Mail Address of Principal Investigator"
               required
             />
           </v-flex>
