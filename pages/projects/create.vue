@@ -4,56 +4,72 @@
       ref="form"
       v-model="valid"
       lazy-validation>
+      <v-container
+        grid-list-md
+        text-xs-center>
+        <v-layout
+          row
+          wrap>        <!-- The Project Title -->
+          <v-flex xs12>
+            <v-text-field
+              v-model="title"
+              :rules="titleRules"
+              label="Title"
+              required
+            />
+          </v-flex>
 
-      <!-- The Project Title -->
-      <v-text-field
-        v-model="title"
-        :rules="titleRules"
-        label="Title"
-        required
-      />
+          <!-- The Project Description -->
+          <v-flex xs12>
+            <v-textarea
+              v-model="description"
+              :rules="descriptionRules"
+              label="Description"
+              rows="10"
+              required
+            />
+          </v-flex>
 
-      <!-- The Project Description -->
-      <v-textarea
-        v-model="description"
-        :rules="descriptionRules"
-        label="Description"
-        rows="10"
-        required
-      />
+          <!-- The E-Mail Address of the responsible person -->
+          <v-flex xs12>
+            <v-text-field
+              v-model="email"
+              :rules="emailRules"
+              label="E-Mail of Principal Investigator"
+              required
+            />
+          </v-flex>
 
-      <!-- The E-Mail Address of the responsible person -->
-      <v-text-field
-        v-model="email"
-        :rules="emailRules"
-        label="E-Mail of Principal Investigator"
-        required
-      />
-
-      <!-- Select the Train -->
-      <v-select
-        v-model="selectedTrains"
-        :items="trains"
-        :rules="trainsRules"
-        item-text="name"
-        item-value="name"
-        chips
-        label="Select Trains for the project"
-        multiple
-      />
+          <!-- Select the Train -->
+          <v-flex xs12>
+            <v-select
+              v-model="selectedTrains"
+              :items="trains"
+              :rules="trainsRules"
+              item-text="name"
+              item-value="name"
+              chips
+              label="Select Trains for the project"
+              multiple
+            />
+          </v-flex>
 
 
-      <v-checkbox
-        v-model="checkbox"
-        :rules="[v => !!v || 'You must agree to continue!']"
-        label="I confirm that the details I provided are correct"
-        required
-      />
+          <v-flex xs12>
+            <v-checkbox
+              v-model="checkbox"
+              :rules="[v => !!v || 'You must agree to continue!']"
+              label="I confirm that the details I provided are correct"
+              required
+            />
+          </v-flex>
 
-      <v-btn
-        :disabled="!valid"
-        @click="submit">Submit Project</v-btn>
-      <v-btn @click="clear">Clear Input</v-btn>
+          <v-btn
+            :disabled="!valid"
+            @click="submit">Submit Project</v-btn>
+          <v-btn @click="clear">Clear Input</v-btn>
+        </v-layout>
+      </v-container>
     </v-form>
   </client-view>
 </template>

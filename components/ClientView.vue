@@ -5,7 +5,7 @@
     <v-flex xs12>
       <!-- Toolbar -->
       <v-toolbar
-        color="white">
+        light>
         <v-toolbar-title>{{ title }}</v-toolbar-title>
       </v-toolbar>
     </v-flex>
